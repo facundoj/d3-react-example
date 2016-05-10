@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import d3 from 'd3';
+import Histogram from '../Histogram';
 
 class H1BGraph extends Component {
 
@@ -50,13 +51,27 @@ class H1BGraph extends Component {
             return (
                 <h1>Loading</h1>
             );
-        } else {
-            return (
-                <div>
-                    <svg></svg>
-                </div>
-            );
         }
+
+        let params = {
+                bins: 20,
+                width: 500,
+                height: 500,
+                axisMargin: 83,
+                topMargin: 10,
+                bottomMargin: 5,
+                value: (d) => d.base_salary,
+                data: this.state.rawData
+            },
+            fullWidth = 700;
+
+        return (
+            <div>
+                <svg width={fullWidth} height={params.height}>
+                    <Histogram {...params} />
+                </svg>
+            </div>
+        );
     }
 }
 
