@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import d3 from 'd3';
 
+import Axis from './Axis';
+
 require('./style.less');
 
 class Histogram extends Component {
@@ -57,6 +59,7 @@ class Histogram extends Component {
                 <g className="bars">
                     {bars.map(this.makeBar.bind(this))}
                 </g>
+                <Axis  />
             </g>
         );
     }
